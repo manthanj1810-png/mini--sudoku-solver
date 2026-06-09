@@ -1,21 +1,29 @@
 # 6x6 Mini Sudoku Solver
 
-A high-performance C++ command-line application that solves a 6x6 Mini Sudoku puzzle using a recursive Backtracking algorithm.
+A high-performance, interactive C++ command-line application that accepts custom $6 \times 6$ Sudoku puzzles from user terminal input and computes solutions instantly using a recursive Backtracking (Depth-First Search) algorithm.
 
 ## Grid Architecture & Rules
 Unlike standard 9x9 layouts or 4x4 mini-grids, a 6x6 Sudoku grid utilizes rectangular sub-grids that span **2 rows by 3 columns** ($2 \times 3$). 
 
-To be considered a valid solution, the numbers 1 through 6 must uniquely fill:
-* Every individual row
-* Every individual column
-* Every $2 \times 3$ rectangular sub-grid
 
-## How It Works
-The application utilizes a **Depth-First Search (DFS)** approach via recursive backtracking:
-1. **Find Empty:** It scans the matrix sequentially to locate an unassigned cell (represented by `0`).
-2. **Test Values:** It attempts to place numbers from `1` to `6` into the cell.
-3. **Validate Constraints:** The engine checks if the number violates row, column, or sub-grid rules.
-4. **Backtrack:** If a path leads to an invalid configuration down the line, the function clears the current cell (`0`) and backtracks to evaluate the next sequence.
+## 🚀 Features
+
+* **Dynamic User Input:** Accepts unique puzzle layouts row-by-row directly through the standard terminal matrix entry.
+* **Smart Grid Boundaries:** Implements precise constraint-checking engineered for custom $2 \times 3$ rectangular sub-grids.
+* **Clean Terminal Visualization:** Formats and prints out both the initial state and the calculated solved state with clear horizontal and vertical matrix walls.
+* **Robust Error Handling:** Safely detects invalid or unsolvable board configurations and exits gracefully without crashing.
+
+
+## 🛠️ How It Works (Algorithmic Logic)
+
+The core engine utilizes a recursive **Backtracking Algorithm** which conceptually builds a state tree to explore potential solutions:
+
+1. **Scan Matrix:** The solver scans the grid sequentially from top-left to bottom-right to find an unassigned cell (marked by a `0`).
+2. **Sequential Prototyping:** It attempts to assign numbers `1` through `6` to that cell.
+3. **Constraint Validation:** For each number, it tests rule validity against current rows, columns, and the $2 \times 3$ target sub-grid block.
+4. **Recursive Exploration:** If the number is valid, it marks the cell and recursively attempts to solve the remainder of the matrix.
+5. **Backtracking Fallback:** If a branch fails down the tree, the algorithm clears the current selection (`0`) and seamlessly moves to the next number choice.
+
 
 ## How to Run
 
