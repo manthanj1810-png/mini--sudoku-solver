@@ -1,4 +1,4 @@
-# 6x6 Mini Sudoku Solver (C++)
+# 6x6 Mini Sudoku Solver
 
 A high-performance C++ command-line application that solves a 6x6 Mini Sudoku puzzle using a recursive Backtracking algorithm.
 
