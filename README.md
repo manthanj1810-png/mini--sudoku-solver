@@ -1,16 +1,33 @@
-# 6x6 Mini Sudoku Solver
+# 6x6 Mini Sudoku Solver (C++)
 
-A lightweight Python command-line application that solves 6x6 Sudoku puzzles using a Backtracking algorithm.
+A high-performance C++ command-line application that solves a 6x6 Mini Sudoku puzzle using a recursive Backtracking algorithm.
+
+## Grid Architecture & Rules
+Unlike standard 9x9 layouts or 4x4 mini-grids, a 6x6 Sudoku grid utilizes rectangular sub-grids that span **2 rows by 3 columns** ($2 \times 3$). 
+
+To be considered a valid solution, the numbers 1 through 6 must uniquely fill:
+* Every individual row
+* Every individual column
+* Every $2 \times 3$ rectangular sub-grid
 
 ## How It Works
-The algorithm uses **recursive backtracking** to find empty cells, tests valid numbers from 1 to 6, and verifies them against the standard Sudoku constraints (Row, Column, and $2 \times 3$ Box sub-grids). If a number violates a rule later in the calculation, the algorithm backtracks and tries the next configuration.
-
-## Features
-* Clean terminal-based grid visualization.
-* Custom constraint checking for rectangular $2 \times 3$ sub-grids.
-* Quick execution time using recursive depth-first exploration.
+The application utilizes a **Depth-First Search (DFS)** approach via recursive backtracking:
+1. **Find Empty:** It scans the matrix sequentially to locate an unassigned cell (represented by `0`).
+2. **Test Values:** It attempts to place numbers from `1` to `6` into the cell.
+3. **Validate Constraints:** The engine checks if the number violates row, column, or sub-grid rules.
+4. **Backtrack:** If a path leads to an invalid configuration down the line, the function clears the current cell (`0`) and backtracks to evaluate the next sequence.
 
 ## How to Run
-Ensure you have Python installed on your system, then clone the repository and run:
+
+### Prerequisites
+Make sure you have a C++ compiler installed on your system (such as `g++` via GCC or Clang).
+
+### Compilation and Execution
+Open your terminal or command prompt, navigate to the project directory, and run the following commands:
+
 ```bash
-python solver.py
+# 1. Compile the source file
+g++ solver.cpp -o solver
+
+# 2. Run the compiled executable
+./solver
