@@ -7,7 +7,7 @@ const int SIZE = 6;
 const int BOX_ROWS = 2;
 const int BOX_COLS = 3;
 
-// Prints the 6x6 board with clear visual boundaries
+
 void printGrid(const vector<vector<int>>& board) {
     for (int i = 0; i < SIZE; i++) {
         if (i % BOX_ROWS == 0 && i != 0) {
@@ -23,19 +23,19 @@ void printGrid(const vector<vector<int>>& board) {
     }
 }
 
-// Checks if placing 'num' at board[row][col] satisfies Sudoku rules
+
 bool isValid(const vector<vector<int>>& board, int row, int col, int num) {
-    // 1. Check the row for duplicates
+    
     for (int x = 0; x < SIZE; x++) {
         if (board[row][x] == num) return false;
     }
 
-    // 2. Check the column for duplicates
+    
     for (int x = 0; x < SIZE; x++) {
         if (board[x][col] == num) return false;
     }
 
-    // 3. Check the 2x3 sub-grid box
+    
     int startRow = row - row % BOX_ROWS;
     int startCol = col - col % BOX_COLS;
     
@@ -48,7 +48,7 @@ bool isValid(const vector<vector<int>>& board, int row, int col, int num) {
     return true;
 }
 
-// Solves the Sudoku board using recursive backtracking
+
 bool solveSudoku(vector<vector<int>>& board) {
     for (int row = 0; row < SIZE; row++) {
         for (int col = 0; col < SIZE; col++) {
@@ -59,7 +59,7 @@ bool solveSudoku(vector<vector<int>>& board) {
 
                         if (solveSudoku(board)) return true;
 
-                        board[row][col] = 0; // Backtrack
+                        board[row][col] = 0; 
                     }
                 }
                 return false;
@@ -70,7 +70,7 @@ bool solveSudoku(vector<vector<int>>& board) {
 }
 
 int main() {
-    // Initialize an empty 6x6 grid
+    
     vector<vector<int>> grid(SIZE, vector<int>(SIZE, 0));
 
     cout << "======================================================" << endl;
@@ -80,7 +80,7 @@ int main() {
     cout << "Use numbers 1-6 for filled cells, and 0 for empty spaces." << endl;
     cout << "Separate numbers in a row with spaces.\n" << endl;
 
-    // Take user input for the grid
+    
     for (int i = 0; i < SIZE; i++) {
         cout << "Enter Row " << i + 1 << " (6 numbers): ";
         for (int j = 0; j < SIZE; j++) {
@@ -101,7 +101,7 @@ int main() {
         cout << "=============================" << endl;
         printGrid(grid);
     } else {
-        cout << "❌ No valid solution exists for this puzzle layout." << endl;
+        cout << "No valid solution exists for this puzzle layout." << endl;
     }
 
     return 0;
